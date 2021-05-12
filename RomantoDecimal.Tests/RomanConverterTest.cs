@@ -29,15 +29,16 @@ namespace RomantoDecimal.Tests
             integerNum.Should().Be(16);
         }
 
-        [Fact]
-        public void Should_ReturnSubtractionOfNumerals()
+        [Theory]
+        [InlineData("MCMXLIV", 1944)]
+        [InlineData("XIV", 14)]
+        public void Should_ReturnSubtractionOfNumerals(string romanNum, int answer)
         {
-          //Given
-          string romanNum = "XIV";
-          //When
-          int integerNum = RomanConverter.ConvertRoman(romanNum);
-          //Then
-          // integerNum.Should().Be(14);
+            //Given
+            //When
+            int integerNum = RomanConverter.ConvertRoman(romanNum);
+            //Then
+            integerNum.Should().Be(answer);
         }
-  }
+    }
 }

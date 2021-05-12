@@ -19,9 +19,29 @@ namespace RomantoDecimal.App
         {
             int summation = 0;
 
-            foreach (var letter in roman)
+            // foreach (var letter in roman)
+            // {
+            //     summation += romanNumerals[letter];
+            // }
+            for (int i = 0; i < roman.Length; i++)
             {
-                summation += romanNumerals[letter];
+                int current = romanNumerals[roman[i]];
+                int next = current;
+                if (i != roman.Length - 1)
+                {
+                    next = romanNumerals[roman[i + 1]];
+                }
+
+                if (current < next)
+                {
+                    summation += (next - current);
+                    i++;
+                }
+                else
+                {
+                    summation += current;
+                }
+
             }
 
 
