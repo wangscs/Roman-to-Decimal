@@ -43,6 +43,7 @@ namespace RomantoDecimal.Tests
         [Theory]
         [InlineData("MCMXLIV", 1944)]
         [InlineData("XIV", 14)]
+        [InlineData("MMMCMXCIX", 3999)]
         public void Should_ReturnSubtractionOfNumerals(string romanNum, int answer)
         {
             //Given
@@ -53,7 +54,7 @@ namespace RomantoDecimal.Tests
         }
 
         [Fact]
-        public void Should_ThrowError_WhenNumberExceedsMaxValueOf10000()
+        public void Should_ThrowError_WhenNumberExceedsMaxValue()
         {
             //Given
             string romanNum = "MMMMMMMMMMM";
@@ -98,6 +99,17 @@ namespace RomantoDecimal.Tests
             Action action = () => RomanConverter.ConvertRoman(romanNum);
             //Then
             action.Should().Throw<ApplicationException>().WithMessage("Negative Values Are Invalid");
+        }
+
+        [Fact]
+        public void Should_ThrowException_WhenGivenInvalidInput()
+        {
+            // //Given
+            // string romanNum = "IIV";
+            // //When
+            // Action action = () => RomanConverter.ConvertRoman(romanNum);
+            // //Then
+            // action.Should().Throw<ApplicationException>().WithMessage("Input is invalid");
         }
     }
 }
