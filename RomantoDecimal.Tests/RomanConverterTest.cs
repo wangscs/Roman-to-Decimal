@@ -53,5 +53,18 @@ namespace RomantoDecimal.Tests
             //Then
             action.Should().Throw<ApplicationException>().WithMessage("Number exceeds max value");
         }
+
+        [Fact]
+        public void Should_ThrowException_WhenInputIsNull()
+        {
+            //Given
+            string romanNum = null;
+
+            //When
+            Action action = () => RomanConverter.ConvertRoman(romanNum);
+
+            //Then
+            action.Should().Throw<NullReferenceException>();
+        }
     }
 }
