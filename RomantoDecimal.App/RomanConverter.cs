@@ -43,7 +43,10 @@ namespace RomantoDecimal.App
                 }
 
             }
-
+            if (summation > 10000)
+            {
+                throw new ApplicationException("Number exceeds max value");
+            }
 
             return summation;
         }

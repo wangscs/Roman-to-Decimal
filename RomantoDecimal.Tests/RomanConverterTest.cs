@@ -42,21 +42,16 @@ namespace RomantoDecimal.Tests
         }
 
         [Fact]
-        public void Should_ThrowError_WhenNumberExceedsMax()
+        public void Should_ThrowError_WhenNumberExceedsMaxValueOf10000()
         {
             //Given
-            int max = 10000;
             string romanNum = "MMMMMMMMMMM";
-            // for (int i = 0; i < max / 1000; i++)
-            // {
-            //     romanNum += "M";
-            // }
+
             //When
             Action action = () => RomanConverter.ConvertRoman(romanNum);
 
-            Console.WriteLine($"Action: {action}");
             //Then
-            action.Should().Throw<ApplicationException>();
+            action.Should().Throw<ApplicationException>().WithMessage("Number exceeds max value");
         }
     }
 }
