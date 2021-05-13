@@ -19,6 +19,8 @@ namespace RomantoDecimal.App
     {
       int summation = 0;
 
+      roman = roman.ToUpper();
+
       for (int i = 0; i < roman.Length; i++)
       {
         int current = romanNumerals[roman[i]];
